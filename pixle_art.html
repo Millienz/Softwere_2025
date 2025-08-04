@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+    <div id ="circle"></div>
+    <style>
+#circle {
+    border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    red 0deg,
+    red 45deg,
+    black 45deg,
+    black 90deg,
+    red 90deg,
+    red 135deg,
+    black 135deg,
+    black 180deg,
+    red 180deg,
+    red 225deg,
+    black 225deg,
+    black 270deg,
+    red 270deg,
+    red 315deg,
+    black 315deg,
+    black 360deg
+  );
+filter:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='b' x='0' y='0'%3E%3CfeFlood x='4' y='4' height='2' width='2'/%3E%3CfeComposite width='10' height='10'/%3E%3CfeTile result='a'/%3E%3CfeComposite in='SourceGraphic' in2='a' operator='in'/%3E%3CfeMorphology operator='dilate' radius='5'/%3E%3C/filter%3E%3C/svg%3E#b");
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    top: 50%;
+
+}
+    </style>

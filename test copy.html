@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+<body>
+    <img id ="tick" src="tick.png" alt ="tick">
+        <img id ="cross" src="cross.png" alt ="cross">
+    <div id = "score">0</div>
+<div id = "question">
+    <div id ="the_question"></div>
+<div id = "awnsers">
+<button id = "one" onclick="awnsers(1)">
+
+</button>
+<button id = "two"onclick="awnsers(2)">
+
+</button>
+<button id = "three"onclick="awnsers(3)">
+
+</button>
+</div>
+</div>
+<div id = "circle"></div>
+</div>
+<div id = "full"></div>
+</body>
+
+<style>
+    body{
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    }
+    :root{
+        --rot:0deg
+    }
+    #but{
+        z-index: 3;
+        border: 0cm;
+            border-radius: 50%;
+                width: 500px;
+    height: 500px;
+    background: rgba(0, 0, 0, 0);
+    }
+#circle {
+    box-shadow: 0px 0px 25px 20px white;
+    display: var(--disply2);
+    z-index: 1;
+    border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    red 0deg,
+    red 45deg,
+    black 45deg,
+    black 90deg,
+    red 90deg,
+    red 135deg,
+    black 135deg,
+    black 180deg,
+    red 180deg,
+    red 225deg,
+    black 225deg,
+    black 270deg,
+    red 270deg,
+    red 315deg,
+    black 315deg,
+    black 360deg
+  );
+
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    top: 50%;
+    rotate: var(--rot);
+
+}
+
+</style>
+<!--circle code-->
+<script>
+
+    function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+    var rot = 0
+var toggle = false;
+var ease = 100
+var the = 0
+function toggleState() {
+    toggle = !toggle;
+    console.log(toggle)
+}
+var whitch = 0
+function number(){
+
+    if (toggle){
+        if (ease > 100 ){
+            document.documentElement.style.setProperty('--disply', `none`);
+            document.documentElement.style.setProperty('--disply2', `block`);
+            document.getElementById("the_question").textContent = (questions[whitch][0]);
+document.getElementById("one").textContent = (questions[whitch][1]);
+document.getElementById("two").textContent = (questions[whitch][2]);
+document.getElementById("three").textContent = (questions[whitch][3]);
+            many = getRndInteger(40, 80)
+            ease -= 0.1
+            return -2
+            
+        }
+        else if (ease > 0){
+            ease /=1.1
+        the += (7 + ease-(ease/1.1));
+        ease /= 1.1
+        }
+        
+        return ease+7;
+
+    }
+    
+    else{
+        
+
+
+        ease = 103
+        if (many>0){
+            many -= 1
+            return 1 + many/10
+            
+        }
+        else{
+            
+            return 0
+            
+        }
+        
+        
+    }
+}
+setInterval(() =>{
+         rot += number();
+                 document.documentElement.style.setProperty('--rot', `${rot}deg`);
+
+
+
+}, 10)
+
+
+
+</script>
+<!--question code-->
+<style>
+
+        :root{
+        --background: white;
+        --disply:block;
+        --disply2:none;
+        --tick:none;
+        --cross:none;
+    }
+    #tick{
+        z-index: 10;
+        display: var(--tick);
+        width: 30%;
+        position: absolute;
+    }
+        #cross{
+            z-index: 10;
+        display: var(--cross);
+        width: 30%;
+        position: absolute;
+    }
+    body{
+        background-color: black;
+    }
+    #the_question{
+        text-align: center;
+    }
+    #question{
+        display: var(--disply);
+        top: 2%;
+        position: absolute;
+        background-color: var(--background);
+        padding: 10px;
+        border-radius: 16px;
+        box-shadow: 0px 0px 12px 12px white;
+    }
+        #score{
+        color: white;
+        display: flex;
+        position: absolute;
+        z-index: 0;
+        font-size: 500%;
+      justify-content: center;  /* horizontal center */
+      align-items: center;      /* vertical center */
+      height: 100vh;            /* full viewport height */
+      text-align: center;
+    }
+
+</style>
+<script>
+    function dealy() {
+        return true
+    }
+    var score = 0
+    var firstScore = 0
+const questions = [
+  ["finish the quote:\ngod is dead", "'and we have killed him'", "'thank god'", "'.'", 1],
+  ["trump lost the populer vote in 2016 by:", "500 thousends votes", "he won it", "3 millon votes", 3],
+  ["crulty of thearter is", "a form of thearter that was created in a hope to reinvegerate western thearter ", "a quote from mussalenie to suppress thearter", "A term used by many thearter critiques to reveiw star treck the musical", 1],
+  ["black rock is", "a beach of the coast of scotland knowen for its muddy watter", "a multi billindoler monopaly", "a slang word for meth used in the early 2000s", 2],
+];
+
+
+function awnsers(real){
+            function hide(){
+            document.documentElement.style.setProperty('--disply', `block`);
+        document.documentElement.style.setProperty('--disply2', `none`);
+        
+        
+        }
+        if ((questions[whitch][4]) == real){
+            
+    firstScore = score
+    score += getRndInteger(1, 5)
+setTimeout(() => show(true), 9000);
+
+    setTimeout(hide_tick, 10000)
+if ((whitch+1) != questions.length){
+whitch += 1
+
+}
+}
+else{
+setTimeout(() => show(false), 9000);
+    firstScore = score
+    score += getRndInteger(-3, 0)
+    setTimeout(hide_tick, 10000)
+    if ((whitch+1) != questions.length){
+whitch += 1
+}
+}
+setTimeout(toggleState, 500);
+
+setTimeout(toggleState, 5000);
+
+setTimeout(update,5000)
+
+        setTimeout(hide, 10000)
+
+
+
+}
+function update(){ 
+document.getElementById("score").textContent = score;
+}
+function hide_tick(){
+        document.documentElement.style.setProperty('--tick', `none`);
+        document.documentElement.style.setProperty('--cross', `none`);
+}
+function show(tick){
+    if (tick){
+    document.documentElement.style.setProperty('--tick', `block`);
+    }
+    else{
+        document.documentElement.style.setProperty('--cross', `block`);
+    }
+}
+document.getElementById("the_question").textContent = (questions[whitch][0]);
+document.getElementById("one").textContent = (questions[whitch][1]);
+document.getElementById("two").textContent = (questions[whitch][2]);
+document.getElementById("three").textContent = (questions[whitch][3]);
+
+</script>

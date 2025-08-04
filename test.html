@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+<body>
+    <div id = "gay">
+    <div id = "test">0</div>
+    <div id = "next">0</div>
+</div>
+<div id = "circle">
+     <button id="but" class ="but" onclick="set()"></button>
+</div>
+</body>
+<style>
+    #gay{
+        top:0%;
+        left:0%;
+        position: absolute;
+    }
+    body{
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    }
+    :root{
+        --rot:0deg
+    }
+    #but{
+        border: 0cm;
+            border-radius: 50%;
+                width: 500px;
+    height: 500px;
+    background: rgba(0, 0, 0, 0);
+    }
+#circle {
+    border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    red 0deg,
+    red 45deg,
+    black 45deg,
+    black 90deg,
+    red 90deg,
+    red 135deg,
+    black 135deg,
+    black 180deg,
+    red 180deg,
+    red 225deg,
+    black 225deg,
+    black 270deg,
+    red 270deg,
+    red 315deg,
+    black 315deg,
+    black 360deg
+  );
+
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    top: 50%;
+    rotate: var(--rot);
+
+}
+
+</style>
+<script>
+let run = false;
+
+function set() {
+    run = !run;
+    return run;
+    fag = false
+}
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+let the = 0;
+var first = 0;
+var antic = 0;
+var ending = 0;
+function stop(){
+
+}
+var fag = true;
+function myFunction(){
+    if (fag){
+            the += (7 + first-(first/1.1));
+        first /= 1.1
+        ending = getRndInteger(the, the + 10) 
+    document.documentElement.style.setProperty('--rot', `${the}deg`);
+    document.getElementById("test").textContent = the
+                 
+                 //getRndInteger(the, the+20)
+}
+}
+setInterval(() => {
+    if (run) {
+        if (the === 360) the = 0;
+        if (antic != 0){
+            antic -= 1
+            the -= 5
+
+             document.documentElement.style.setProperty('--rot', `${the}deg`);
+        }
+        else{
+            setTimeout(myFunction, 200)
+            
+        }
+               
+    }
+    else{
+                     document.documentElement.style.setProperty('--rot', `${the}deg`);
+                     document.getElementById("next").textContent = the
+                first = 100
+        antic = 20
+    }
+}, 10);
+
+
+</script>
